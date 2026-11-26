@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOLE DISTRICT</title>
+</head>
+<style>
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F5F3EF;
+    color: #111111;
+}
+
+/* Navigation */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 7%;
+    background-color: #111111;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 900;
+    color: white;
+    text-decoration: none;
+    letter-spacing: -1px;
+}
+
+.logo span {
+    color: #FF5A1F;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 35px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #FF5A1F;
+}
+
+.nav-btn {
+    background-color: #FF5A1F;
+    color: white;
+    text-decoration: none;
+    padding: 12px 22px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.nav-btn:hover {
+    background-color: white;
+    color: #111111;
+}
+
+.menu-toggle {
+    display: none;
+}
+.menu-toggle {
+    display: none;
+    color: white;
+    background: transparent;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+/* Tablet and mobile */
+
+@media (max-width: 768px) {
+
+    .navbar {
+        padding: 18px 5%;
+        position: relative;
+    }
+
+    .logo {
+        font-size: 21px;
+    }
+
+    .menu-toggle {
+        display: block;
+        z-index: 1002;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+
+        background: #111111;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        visibility: hidden;
+
+        transition: max-height 0.4s ease,
+                    opacity 0.3s ease,
+                    padding 0.3s ease,
+                    visibility 0.3s ease;
+
+        z-index: 1001;
+    }
+
+    .nav-links.active {
+        max-height: 400px;
+        padding: 30px 20px;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .nav-links li {
+        text-align: center;
+    }
+
+    .nav-links a {
+        font-size: 15px;
+    }
+
+    .nav-btn {
+        display: inline-block;
+    }
+}
+
+/* Smaller phones */
+
+@media (max-width: 480px) {
+
+    .navbar {
+        padding: 16px 5%;
+    }
+
+    .logo {
+        font-size: 19px;
+    }
+
+    .menu-toggle {
+        font-size: 25px;
+    }
+}
+
+/* HERO SECTION */
+
+.hero {
+    min-height: 650px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 70px 7%;
+    gap: 50px;
+    overflow: hidden;
+}
+
+/* HERO CONTENT */
+
+.hero-tag {
+    color: #FF5A1F;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    margin-bottom: 25px;
+}
+
+.hero-content h1 {
+    font-size: clamp(55px, 7vw, 100px);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -5px;
+}
+
+.hero-content h1 span {
+    color: #FF5A1F;
+    display: block;
+}
+
+.hero-description {
+    max-width: 430px;
+    color: #666;
+    line-height: 1.8;
+    margin-top: 25px;
+    font-size: 16px;
+}
+
+/* HERO BUTTONS */
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 35px;
+    flex-wrap: wrap;
+}
+
+.primary-btn,
+.secondary-btn {
+    padding: 15px 23px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 13px;
+    transition: 0.3s ease;
+}
+
+.primary-btn {
+    background: #FF5A1F;
+    color: white;
+}
+
+.primary-btn:hover {
+    background: #111;
+    transform: translateY(-4px);
+}
+
+.secondary-btn {
+    border: 1px solid #111;
+    color: #111;
+}
+
+.secondary-btn:hover {
+    background: #111;
+    color: white;
+}
+
+/* HERO IMAGE */
+
+.hero-image {
+    position: relative;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 5px;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.hero-image img:hover {
+    transform: scale(1.03);
+}
+
+/* IMAGE LABEL */
+
+.image-label {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: #111;
+    color: white;
+    padding: 18px;
+}
+
+.image-label span {
+    color: #FF5A1F;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+.image-label h3 {
+    margin-top: 8px;
+    font-size: 20px;
+}
+
+/* HERO BOTTOM */
+
+.hero-bottom {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 65px;
+    padding-top: 15px;
+    border-top: 1px solid #ccc;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #777;
+}
+.trending {
+    padding: 90px 7%;
+    background-color: #ffffff;
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 45px;
+}
+
+.section-tag {
+    color: #FF5A1F;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+}
+
+.section-heading h2 {
+    font-size: clamp(35px, 5vw, 55px);
+    font-weight: 900;
+    letter-spacing: -2px;
+}
+
+.section-heading h2 span {
+    color: #FF5A1F;
+}
+
+.section-description {
+    color: #777;
+    margin-top: 12px;
+    line-height: 1.6;
+}
+
+.view-all {
+    color: #111;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    border-bottom: 2px solid #FF5A1F;
+    padding-bottom: 7px;
+}
+
+/* PRODUCT GRID */
+
+.product-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.product-card {
+    background: #F5F3EF;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+}
+
+/* PRODUCT IMAGE */
+
+.product-image {
+    position: relative;
+    overflow: hidden;
+    height: 300px;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.08);
+}
+
+/* PRODUCT BADGE */
+
+.product-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 1;
+    background: #FF5A1F;
+    color: white;
+    padding: 8px 12px;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.product-badge.new {
+    background: #111;
+}
+
+/* PRODUCT INFORMATION */
+
+.product-info {
+    padding: 22px;
+}
+
+.product-category {
+    color: #888;
+    font-size: 10px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.product-info h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.product-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
+}
+
+.product-bottom p {
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.product-bottom a {
+    color: #FF5A1F;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+
+/* PROMOTIONAL BANNER */
+
+.promo-banner {
+    background: #111111;
+    color: white;
+    padding: 85px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    overflow: hidden;
+}
+
+.promo-tag {
+    color: #FF5A1F;
+    font-size: 12px;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.promo-content h2 {
+    font-size: clamp(50px, 7vw, 85px);
+    line-height: 0.95;
+    letter-spacing: -4px;
+}
+
+.promo-content h2 span {
+    color: #FF5A1F;
+}
+
+.promo-content > p:not(.promo-tag) {
+    color: #aaa;
+    margin-top: 20px;
+    line-height: 1.7;
+    max-width: 400px;
+}
+
+.promo-btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 15px 25px;
+    background: #FF5A1F;
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.promo-btn:hover {
+    background: white;
+    color: #111;
+}
+
+.promo-number {
+    text-align: center;
+    border: 2px solid #FF5A1F;
+    padding: 35px;
+    transform: rotate(8deg);
+}
+
+.promo-number span {
+    font-size: 90px;
+    font-weight: 900;
+    color: #FF5A1F;
+}
+
+.promo-number p {
+    font-size: 11px;
+    letter-spacing: 3px;
+}
+/* NEWSLETTER SECTION */
+
+.newsletter {
+    background: #F5F3EF;
+    padding: 90px 7%;
+    text-align: center;
+}
+
+.newsletter-content {
+    max-width: 650px;
+    margin: auto;
+}
+
+.newsletter h2 {
+    font-size: clamp(45px, 6vw, 70px);
+    font-weight: 900;
+    line-height: 1;
+    margin-top: 15px;
+}
+
+.newsletter h2 span {
+    color: #FF5A1F;
+}
+
+.newsletter-content > p:not(.section-tag) {
+    color: #777;
+    margin: 20px auto;
+    line-height: 1.7;
+}
+
+#newsletter-form {
+    display: flex;
+    max-width: 500px;
+    margin: 30px auto 0;
+    border: 1px solid #ccc;
+    background: white;
+}
+
+#newsletter-email {
+    flex: 1;
+    min-width: 0;
+    padding: 17px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+#newsletter-form button {
+    background: #FF5A1F;
+    color: white;
+    border: none;
+    padding: 0 22px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+#newsletter-form button:hover {
+    background: #111;
+}
+
+.newsletter-message {
+    font-size: 14px;
+    margin-top: 15px;
+}
+
+/* FOOTER */
+
+.footer {
+    background: #111111;
+    color: white;
+    padding: 65px 7% 20px;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    padding-bottom: 50px;
+}
+
+.footer-logo {
+    color: white;
+    font-size: 25px;
+    font-weight: 900;
+    text-decoration: none;
+}
+
+.footer-logo span {
+    color: #FF5A1F;
+}
+
+.footer-brand p {
+    color: #999;
+    line-height: 1.8;
+    max-width: 280px;
+    margin-top: 18px;
+    font-size: 14px;
+}
+
+.footer-links,
+.footer-social {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.footer-links h3,
+.footer-social h3 {
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+
+.footer-links a,
+.footer-social a {
+    color: #999;
+    text-decoration: none;
+    font-size: 13px;
+    transition: 0.3s;
+}
+
+.footer-links a:hover,
+.footer-social a:hover {
+    color: #FF5A1F;
+}
+
+.footer-bottom {
+    border-top: 1px solid #333;
+    padding-top: 22px;
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    color: #888;
+    font-size: 12px;
+}
+
+/* SCROLL REVEAL ANIMATIONS */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(45px);
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Reveal from left */
+
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.8s ease;
+}
+
+.reveal-left.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Reveal from right */
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.8s ease;
+}
+
+.reveal-right.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Reveal with zoom */
+
+.reveal-zoom {
+    opacity: 0;
+    transform: scale(0.92);
+    transition: all 0.8s ease;
+}
+
+.reveal-zoom.active {
+    opacity: 1;
+    transform: scale(1);
+}
+@media (max-width: 768px) {
+    .navbar {
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 16px 6%;
+    }
+}
+@media (max-width: 768px) {
+    button, .hero-buttons a, #newsletter-form button {
+        min-height: 48px;
+    }
+
+    #newsletter-email {
+        font-size: 16px; /* below 16px, iOS Safari zooms in when the field is focused */
+    }
+}
+
+
+/* RESPONSIVE PROMO */
+
+@media (max-width: 768px) {
+    .promo-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 65px 6%;
+    }
+
+    .promo-number {
+        align-self: center;
+    }
+}
+
+/* RESPONSIVE HERO */
+
+@media (max-width: 768px) {
+
+    .hero {
+        grid-template-columns: 1fr;
+        padding: 50px 6%;
+        gap: 40px;
+    }
+
+    .hero-content h1 {
+        font-size: 65px;
+    }
+
+    .hero-image img {
+        height: 380px;
+    }
+
+    .hero-bottom {
+        margin-top: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .hero-content h1 {
+        font-size: 52px;
+        letter-spacing: -3px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .hero-buttons a {
+        text-align: center;
+    }
+
+    .hero-image img {
+        height: 300px;
+    }
+    /* RESPONSIVE PRODUCT SECTION */
+
+@media (max-width: 768px) {
+
+    .product-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .section-heading {
+        align-items: flex-start;
+        gap: 20px;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .product-container {
+        grid-template-columns: 1fr;
+    }
+
+    .product-image {
+        height: 320px;
+    }
+
+    .trending {
+        padding: 60px 6%;
+    }
+}
+
+/* NEWSLETTER SECTION */
+
+.newsletter {
+    background: #F5F3EF;
+    padding: 90px 7%;
+    text-align: center;
+}
+
+.newsletter-content {
+    max-width: 650px;
+    margin: auto;
+}
+
+.newsletter h2 {
+    font-size: clamp(45px, 6vw, 70px);
+    font-weight: 900;
+    line-height: 1;
+    margin-top: 15px;
+}
+
+.newsletter h2 span {
+    color: #FF5A1F;
+}
+
+.newsletter-content > p:not(.section-tag) {
+    color: #777;
+    margin: 20px auto;
+    line-height: 1.7;
+}
+
+#newsletter-form {
+    display: flex;
+    max-width: 500px;
+    margin: 30px auto 0;
+    border: 1px solid #ccc;
+    background: white;
+}
+
+#newsletter-email {
+    flex: 1;
+    min-width: 0;
+    padding: 17px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+#newsletter-form button {
+    background: #FF5A1F;
+    color: white;
+    border: none;
+    padding: 0 22px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+#newsletter-form button:hover {
+    background: #111;
+}
+
+.newsletter-message {
+    font-size: 14px;
+    margin-top: 15px;
+}
+
+/* MOBILE NEWSLETTER */
+
+@media (max-width: 480px) {
+    #newsletter-form {
+        flex-direction: column;
+        border: none;
+        background: transparent;
+        gap: 10px;
+    }
+
+    #newsletter-email {
+        padding: 17px;
+    }
+
+    #newsletter-form button {
+        padding: 17px;
+    }
+}
+/* RESPONSIVE FOOTER */
+
+@media (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+    }
+}
+}
+</style>
+<body>
+    <head>
+    <header>
+    <nav class="navbar">
+        <a href="index.html" class="logo">SOLE<span>DISTRICT.</span></a>
+
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/gallery">Collection</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+
+        <a href="gallery.html" class="nav-btn">Shop Now</a>
+
+         <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="navLinks">
+        ☰
+    </button>
+
+    </nav>
+</header>
+  
+
+<!-- HERO SECTION -->
+<section class="hero">
+
+    <div class="hero-content">
+        <p class="hero-tag">THE NEW COLLECTION — 2026</p>
+
+        <h1>
+            OWN YOUR
+            <span>STRIDE.</span>
+        </h1>
+
+        <p class="hero-description">
+            More than just sneakers. A statement of style,
+            confidence and individuality. Find your next
+            favourite pair at Sole District.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="gallery.html" class="primary-btn">
+                Explore Collection →
+            </a>
+
+            <a href="about.html" class="secondary-btn">
+                Discover Our Story
+            </a>
+        </div>
+
+        <div class="hero-bottom">
+            <span>STEP INTO YOUR STYLE.</span>
+            <span>EST. 2026</span>
+        </div>
+    </div>
+
+    <div class="hero-image">
+        <img src="/images/hero-sneaker.jpg"
+             alt="Featured sneaker from Sole District">
+        <div class="image-label">
+            <span>01 / FEATURED</span>
+            <h3>THE STREET<br>COLLECTION</h3>
+        </div>
+    </div>
+
+</section>
+
+<!-- TRENDING SNEAKERS SECTION -->
+
+<section class="trending">
+
+    <div class="section-heading">
+        <div>
+            <p class="section-tag">OUR COLLECTION</p>
+            <h2>Trending <span>Sneakers.</span></h2>
+            <p class="section-description">
+                The pairs everyone is talking about.
+                Find your next favourite.
+            </p>
+        </div>
+
+        <a href="gallery.html" class="view-all">
+            View All Products →
+        </a>
+    </div>
+
+    <div class="product-container">
+
+        <!-- PRODUCT 1 -->
+        <div class="product-card">
+            <div class="product-image">
+                <span class="product-badge">BESTSELLER</span>
+                <img src="/images/sneaker-1.jpg" alt="Classic white sneakers">
+            </div>
+
+            <div class="product-info">
+                <p class="product-category">CASUAL COLLECTION</p>
+                <h3>Classic Street Runner</h3>
+
+                <div class="product-bottom">
+                    <p>₦85,000</p>
+                    <a href="gallery.html">Explore →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- PRODUCT 2 -->
+        <div class="product-card">
+            <div class="product-image">
+                <span class="product-badge new">NEW ARRIVAL</span>
+                <img src="/images/sneaker-2.jpg" alt="Modern sporty sneakers">
+            </div>
+
+            <div class="product-info">
+                <p class="product-category">SPORT COLLECTION</p>
+                <h3>Velocity Runner</h3>
+
+                <div class="product-bottom">
+                    <p>₦110,000</p>
+                    <a href="gallery.html">Explore →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- PRODUCT 3 -->
+        <div class="product-card">
+            <div class="product-image">
+                <span class="product-badge">POPULAR</span>
+                <img src="/images/sneaker-3.jpg" alt="High top street sneakers">
+            </div>
+
+            <div class="product-info">
+                <p class="product-category">STREET COLLECTION</p>
+                <h3>Urban High Top</h3>
+
+                <div class="product-bottom">
+                    <p>₦95,000</p>
+                    <a href="gallery.html">Explore →</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+<!-- PROMOTIONAL BANNER -->
+
+<section class="promo-banner">
+
+    <div class="promo-content">
+        <p class="promo-tag">THE SOLE DISTRICT EXPERIENCE</p>
+
+        <h2>
+            YOUR STYLE.<br>
+            YOUR <span>RULES.</span>
+        </h2>
+
+        <p>
+            Discover sneakers that match your personality.
+            Make every step count.
+        </p>
+
+        <a href="gallery.html" class="promo-btn">
+            Explore The Collection →
+        </a>
+    </div>
+
+    <div class="promo-number">
+        <span>SD.</span>
+        <p>STEP DIFFERENT.</p>
+    </div>
+
+</section>
+<!-- NEWSLETTER SECTION -->
+
+<section class="newsletter">
+
+    <div class="newsletter-content">
+        <p class="section-tag">STAY IN THE LOOP</p>
+
+        <h2>Never Miss<br><span>A Drop.</span></h2>
+
+        <p>
+            Be the first to know about new arrivals,
+            exclusive releases and special offers.
+        </p>
+
+        <form id="newsletter-form">
+
+            <input
+                type="email"
+                id="newsletter-email"
+                placeholder="Enter your email address"
+                required
+            >
+
+            <button type="submit">Subscribe →</button>
+
+        </form>
+
+        <p id="newsletter-message" class="newsletter-message"></p>
+
+    </div>
+
+</section>
+<!-- FOOTER SECTION -->
+
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <div class="footer-brand">
+            <a href="index.html" class="footer-logo">
+                SOLE<span>DISTRICT.</span>
+            </a>
+
+            <p>
+                More than just sneakers.
+                A statement of style, confidence and individuality.
+            </p>
+        </div>
+
+        <div class="footer-links">
+            <h3>Explore</h3>
+            <a href="/">Home</a>
+            <a href="/about">About Us</a>
+            <a href="/gallery">Collection</a>
+            <a href="/contact">Contact</a>
+        </div>
+
+        <div class="footer-links">
+            <h3>Customer Care</h3>
+            <a href="/contact">Help Centre</a>
+            <a href="/contact">Shipping Information</a>
+            <a href="/contact">Returns</a>
+        </div>
+
+        <div class="footer-social">
+            <h3>Follow Us</h3>
+            <a href="https://instagram.com">Instagram</a>
+            <a href="https://facebook.com">Facebook</a>
+            <a href="https://tiktok.com">TikTok</a>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 SOLE DISTRICT. All rights reserved.</p>
+        <p>STEP INTO YOUR STYLE.</p>
+    </div>
+
+<script>
+    const newsletterForm = document.getElementById("newsletter-form");
+
+if (newsletterForm) {
+    newsletterForm.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        const email = document.getElementById("newsletter-email").value;
+
+        const message = document.getElementById("newsletter-message");
+
+        message.textContent = `Thank you! ${email} has been submitted.`;
+
+        message.style.color = "#FF5A1F";
+
+        newsletterForm.reset();
+
+    });
+}
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+
+menuToggle.addEventListener("click", () => {
+
+    navLinks.classList.toggle("active");
+
+    const isOpen = navLinks.classList.contains("active");
+
+    menuToggle.textContent = isOpen ? "×" : "☰";
+
+    menuToggle.setAttribute("aria-expanded", isOpen);
+
+    menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Close navigation menu" : "Open navigation menu"
+    );
+
+});
+
+navLinks.querySelectorAll("a").forEach(link => {
+
+    link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+        menuToggle.textContent = "☰";
+        menuToggle.setAttribute("aria-expanded", "false");
+    });
+
+});
+/* SCROLL REVEAL */
+
+const revealElements = document.querySelectorAll(
+    ".reveal, .reveal-left, .reveal-right, .reveal-zoom"
+);
+
+const revealObserver = new IntersectionObserver((entries) => {
+
+    entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+
+            // Stop observing after the animation runs
+            revealObserver.unobserve(entry.target);
+        }
+
+    });
+
+}, {
+    threshold: 0.15
+});
+
+revealElements.forEach(element => {
+    revealObserver.observe(element);
+});
+</script>
+</head>
+</body>
+
+</html>

@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F5F3EF;
+    color: #111111;
+}
+
+    /* CONTACT HERO */
+
+.contact-hero {
+    min-height: 380px;
+    background: #111111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 8%;
+    color: white;
+}
+
+.contact-hero-content {
+    max-width: 750px;
+}
+
+.contact-hero h1 {
+    font-size: clamp(45px, 7vw, 75px);
+    letter-spacing: -2px;
+    margin-bottom: 20px;
+}
+
+.contact-hero h1 span {
+    color: #FF5A1F;
+}
+
+.contact-hero-content > p:last-child {
+    color: #ccc;
+    line-height: 1.9;
+    font-size: 15px;
+    max-width: 600px;
+    margin: auto;
+}
+/* CONTACT INFORMATION */
+
+.contact-info-section {
+    padding: 100px 8%;
+    background: #F5F3EF;
+}
+
+.contact-info-heading {
+    text-align: center;
+    margin-bottom: 55px;
+}
+
+.contact-info-heading h2 {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.contact-info-heading h2 span {
+    color: #FF5A1F;
+}
+
+.contact-info-heading > p:last-child {
+    color: #777;
+    font-size: 15px;
+}
+
+.contact-info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.contact-info-card {
+    background: white;
+    padding: 40px 30px;
+    border-bottom: 3px solid transparent;
+    transition: 0.3s;
+}
+
+.contact-info-card:hover {
+    transform: translateY(-8px);
+    border-bottom-color: #FF5A1F;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.06);
+}
+
+.contact-icon {
+    color: #FF5A1F;
+    font-size: 30px;
+    font-weight: 900;
+    margin-bottom: 25px;
+}
+
+.contact-info-card h3 {
+    font-size: 17px;
+    margin-bottom: 15px;
+}
+
+.contact-info-card p {
+    color: #777;
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.contact-info-card a {
+    color: #FF5A1F;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.contact-info-card a:hover {
+    color: #111;
+}
+/* CONTACT FORM */
+
+.contact-form-section {
+    padding: 110px 8%;
+    background: white;
+}
+
+.contact-form-container {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.form-intro h2 {
+    font-size: 42px;
+    line-height: 1.2;
+    margin-bottom: 25px;
+}
+
+.form-intro h2 span {
+    color: #FF5A1F;
+}
+
+.form-intro > p:not(.section-tag) {
+    color: #777;
+    font-size: 15px;
+    line-height: 1.9;
+}
+
+.form-note {
+    margin-top: 50px;
+    padding: 25px;
+    background: #F5F3EF;
+    border-left: 4px solid #FF5A1F;
+}
+
+.form-note h3 {
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.form-note p {
+    color: #777;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+
+/* FORM WRAPPER */
+
+.contact-form-wrapper {
+    background: #F5F3EF;
+    padding: 40px;
+}
+
+.form-group {
+    margin-bottom: 23px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 16px;
+    border: 1px solid #ddd;
+    background: white;
+    outline: none;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #FF5A1F;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.send-btn {
+    width: 100%;
+    padding: 17px;
+    background: #111;
+    color: white;
+    border: none;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.send-btn:hover {
+    background: #FF5A1F;
+}
+
+#formResponse {
+    margin-top: 18px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+/* Navigation */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 7%;
+    background-color: #111111;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 900;
+    color: white;
+    text-decoration: none;
+    letter-spacing: -1px;
+}
+
+.logo span {
+    color: #FF5A1F;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 35px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #FF5A1F;
+}
+
+.nav-btn {
+    background-color: #FF5A1F;
+    color: white;
+    text-decoration: none;
+    padding: 12px 22px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.nav-btn:hover {
+    background-color: white;
+    color: #111111;
+}
+
+.menu-toggle {
+    display: none;
+}
+/* FOOTER */
+
+.footer {
+    background: #111111;
+    color: white;
+    padding: 65px 7% 20px;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    padding-bottom: 50px;
+}
+
+.footer-logo {
+    color: white;
+    font-size: 25px;
+    font-weight: 900;
+    text-decoration: none;
+}
+
+.footer-logo span {
+    color: #FF5A1F;
+}
+
+.footer-brand p {
+    color: #999;
+    line-height: 1.8;
+    max-width: 280px;
+    margin-top: 18px;
+    font-size: 14px;
+}
+
+.footer-links,
+.footer-social {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.footer-links h3,
+.footer-social h3 {
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+
+.footer-links a,
+.footer-social a {
+    color: #999;
+    text-decoration: none;
+    font-size: 13px;
+    transition: 0.3s;
+}
+
+.footer-links a:hover,
+.footer-social a:hover {
+    color: #FF5A1F;
+}
+
+.footer-bottom {
+    border-top: 1px solid #333;
+    padding-top: 22px;
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    color: #888;
+    font-size: 12px;
+}
+.main-footer {
+    background: #111111;
+    color: white;
+    padding: 70px 8% 20px;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    padding-bottom: 50px;
+}
+
+.footer-brand h2 {
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.footer-brand h2 span {
+    color: #FF5A1F;
+}
+
+.footer-brand p {
+    color: #aaa;
+    font-size: 14px;
+    line-height: 1.9;
+    max-width: 300px;
+}
+
+.footer-links h3,
+.footer-social h3 {
+    font-size: 13px;
+    letter-spacing: 1px;
+    margin-bottom: 22px;
+    color: #FF5A1F;
+}
+
+.footer-links a,
+.footer-social a {
+    display: block;
+    color: #aaa;
+    text-decoration: none;
+    font-size: 13px;
+    margin-bottom: 14px;
+    transition: 0.3s;
+}
+
+.footer-links a:hover,
+.footer-social a:hover {
+    color: #FF5A1F;
+    padding-left: 5px;
+}
+
+.footer-bottom {
+    border-top: 1px solid #333;
+    padding-top: 22px;
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    color: #888;
+    font-size: 12px;
+}
+@media (max-width: 768px) {
+    .navbar {
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 16px 6%;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+
+
+
+/* RESPONSIVE CONTACT INFORMATION */
+
+@media (max-width: 768px) {
+    .contact-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-info-heading h2 {
+        font-size: 32px;
+    }
+
+    .contact-info-section {
+        padding: 70px 6%;
+    }
+}
+/* FORM RESPONSIVENESS */
+
+@media (max-width: 768px) {
+    .contact-form-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .contact-form-section {
+        padding: 75px 6%;
+    }
+
+    .form-intro h2 {
+        font-size: 32px;
+    }
+
+    .contact-form-wrapper {
+        padding: 25px 20px;
+    }
+}
+</style>
+<body>
+    <header>
+    <nav class="navbar">
+        <a href="index.html" class="logo">SOLE<span>DISTRICT.</span></a>
+
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/gallery">Collection</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+
+        <a href="gallery.html" class="nav-btn">Shop Now</a>
+
+        <button class="menu-toggle" aria-label="Toggle navigation">
+            ☰
+        </button>
+    </nav>
+</header>
+   
+    <section class="contact-hero">
+
+    <div class="contact-hero-content">
+        <p class="section-tag">WE'D LOVE TO HEAR FROM YOU</p>
+
+        <h1>LET'S <span>CONNECT.</span></h1>
+
+        <p>
+            Have a question about our collection?
+            Need assistance or want to make an enquiry?
+            We're just a message away.
+        </p>
+    </div>
+
+</section>
+
+
+ 
+
+       
+<section class="contact-info-section">
+
+    <div class="contact-info-heading">
+        <p class="section-tag">GET IN TOUCH</p>
+        <h2>WE'RE HERE TO <span>HELP.</span></h2>
+        <p>Have something on your mind? Reach out to us.</p>
+    </div>
+
+    <div class="contact-info-grid">
+
+        <div class="contact-info-card">
+            <div class="contact-icon">01</div>
+            <h3>EMAIL US</h3>
+            <p>Send us an email for enquiries and assistance.</p>
+            <a href="darasimimichael83@gmail.com">
+                hello@soledistrict.com
+            </a>
+        </div>
+
+        <div class="contact-info-card">
+            <div class="contact-icon">02</div>
+            <h3>CALL US</h3>
+            <p>Speak with us directly about your enquiries.</p>
+            <a href="tel:+2347044690951">
+                +234 7044690951
+            </a>
+        </div>
+
+        <div class="contact-info-card">
+            <div class="contact-icon">03</div>
+            <h3>FOLLOW US</h3>
+            <p>Stay connected and discover our latest styles.</p>
+            <a href="#">@soledistrict</a>
+        </div>
+
+    </div>
+
+</section>
+<section class="contact-form-section">
+
+    <div class="contact-form-container">
+
+        <div class="form-intro">
+            <p class="section-tag">SEND US A MESSAGE</p>
+
+            <h2>LET'S TALK ABOUT <span>YOUR STYLE.</span></h2>
+
+            <p>
+                Whether you have questions about our sneakers,
+                need assistance or simply want to say hello,
+                we'd love to hear from you.
+            </p>
+
+            <div class="form-note">
+                <h3>NEED HELP?</h3>
+                <p>
+                    Fill out the form and tell us how we can
+                    assist you. We'll be happy to help.
+                </p>
+            </div>
+        </div>
+
+        <div class="contact-form-wrapper">
+
+            <form id="contactForm">
+
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input
+                        type="text"
+                        id="fullName"
+                        name="fullName"
+                        placeholder="Enter your full name"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your email address"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input
+                        type="text"
+                        id="subject"
+                        name="subject"
+                        placeholder="What is your enquiry about?"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea
+                        id="message"
+                        name="message"
+                        rows="6"
+                        placeholder="Write your message here..."
+                        required
+                    ></textarea>
+                </div>
+
+                <button type="submit" class="send-btn">
+                    SEND MESSAGE
+                </button>
+
+                <p id="formResponse"></p>
+
+            </form>
+
+        </div>
+
+    </div>
+    
+
+
+
+</section>
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <div class="footer-brand">
+            <a href="index.html" class="footer-logo">
+                SOLE<span>DISTRICT.</span>
+            </a>
+
+            <p>
+                More than just sneakers.
+                A statement of style, confidence and individuality.
+            </p>
+        </div>
+
+        <div class="footer-links">
+            <h3>Explore</h3>
+            <a href="/">Home</a>
+            <a href="/about">About Us</a>
+            <a href="/gallery">Collection</a>
+            <a href="/contact">Contact</a>
+        </div>
+
+        <div class="footer-links">
+            <h3>Customer Care</h3>
+            <a href="/contact">Help Centre</a>
+            <a href="/contact">Shipping Information</a>
+            <a href="/contact">Returns</a>
+        </div>
+
+        <div class="footer-social">
+            <h3>Follow Us</h3>
+            <a href="https://instagram.com">Instagram</a>
+            <a href="https://facebook.com">Facebook</a>
+            <a href="https://tiktok.com">TikTok</a>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 SOLE DISTRICT. All rights reserved.</p>
+        <p>STEP INTO YOUR STYLE.</p>
+    </div>
+
+<script>
+    /* CONTACT FORM */
+
+const contactForm = document.getElementById("contactForm");
+
+if (contactForm) {
+
+    contactForm.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        const fullName = document.getElementById("fullName").value;
+        const email = document.getElementById("email").value;
+        const subject = document.getElementById("subject").value;
+        const message = document.getElementById("message").value;
+
+        const response = document.getElementById("formResponse");
+
+        response.style.color = "#16803c";
+
+        response.textContent =
+            `Thank you, ${fullName}! Your message has been received.`;
+
+        contactForm.reset();
+
+        console.log({
+            fullName,
+            email,
+            subject,
+            message
+        });
+
+    });
+
+}
+</script>
+</body>
+</html>
