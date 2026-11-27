@@ -343,6 +343,12 @@ body {
 
 .menu-toggle {
     display: none;
+    color: white;
+    background: transparent;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    padding: 5px;
 }
 /* ===== FILTER ANIMATION ===== */
 
@@ -357,6 +363,60 @@ body {
     transform: translateY(20px);
     pointer-events: none;
 }
+
+
+
+.section-tag {
+    font-size: 11px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    color: #FF5A1F;
+    margin-bottom: 15px;
+}
+
+.product-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 1;
+    background: #FF5A1F;
+    color: white;
+    padding: 8px 12px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.product-category {
+    font-size: 10px;
+    color: #FF5A1F;
+    letter-spacing: 2px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.gallery-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+/* replace your existing ".gallery-card .enquire-btn" rule with this */
+.enquire-btn {
+    display: inline-block;
+    padding: 12px 20px;
+    background: #111;
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+    transition: background 0.3s ease;
+}
+
+.enquire-btn:hover {
+    background: #FF5A1F;
+}
+
+
 
 /* ===== QUICK VIEW MODAL ===== */
 
@@ -541,6 +601,97 @@ body {
     color: #888;
     font-size: 12px;
 }
+@media (max-width: 900px) {
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+@media (max-width: 768px) {
+
+    .navbar {
+        padding: 18px 5%;
+        position: relative;
+    }
+
+    .logo {
+        font-size: 21px;
+    }
+
+    .menu-toggle {
+        display: block;
+        z-index: 1002;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #111;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        visibility: hidden;
+
+        transition: max-height 0.4s ease,
+                    opacity 0.3s ease,
+                    padding 0.3s ease,
+                    visibility 0.3s ease;
+
+        z-index: 1001;
+    }
+
+    .nav-links.active {
+        max-height: 400px;
+        padding: 30px 20px;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .nav-links li {
+        text-align: center;
+    }
+     .nav-links a {
+        font-size: 15px;
+    }
+
+    .nav-btn {
+        display: inline-block;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .navbar {
+        padding: 16px 5%;
+    }
+
+    .logo {
+        font-size: 19px;
+    }
+
+    .menu-toggle {
+        font-size: 25px;
+    }
+}
 @media (max-width: 768px) {
     .navbar {
         flex-wrap: wrap;
@@ -638,7 +789,7 @@ body {
     <nav class="navbar">
         <a href="index.html" class="logo">SOLE<span>DISTRICT.</span></a>
 
-        <ul class="nav-links">
+        <ul class="nav-links" id="navLinks">
             <li><a href="/">Home</a></li>
             <li><a href="/about">About</a></li>
             <li><a href="/gallery">Collection</a></li>
@@ -647,9 +798,16 @@ body {
 
         <a href="gallery.html" class="nav-btn">Shop Now</a>
 
-        <button class="menu-toggle" aria-label="Toggle navigation">
-            ☰
-        </button>
+       
+         <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="navLinks">
+        ☰
+    </button>
     </nav>
 </header>
       <section class="collection-hero">
@@ -940,6 +1098,38 @@ filterButtons.forEach(button => {
         });
     });
 });
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+
+if (menuToggle && navLinks) {
+
+    menuToggle.addEventListener("click", function () {
+
+        navLinks.classList.toggle("active");
+
+        const isOpen = navLinks.classList.contains("active");
+
+        menuToggle.textContent = isOpen ? "×" : "☰";
+
+        menuToggle.setAttribute("aria-expanded", isOpen);
+
+    });
+
+    navLinks.querySelectorAll("a").forEach(link => {
+
+        link.addEventListener("click", function () {
+
+            navLinks.classList.remove("active");
+            menuToggle.textContent = "☰";
+            menuToggle.setAttribute("aria-expanded", "false");
+
+        });
+
+    });
+
+}
+
+
 
 
 // ===== QUICK VIEW FUNCTIONALITY =====

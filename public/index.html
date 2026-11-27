@@ -735,17 +735,18 @@ body {
 }
 
 /* RESPONSIVE HERO */
-
 @media (max-width: 768px) {
 
     .hero {
+        min-height: auto;
         grid-template-columns: 1fr;
         padding: 50px 6%;
         gap: 40px;
     }
 
     .hero-content h1 {
-        font-size: 65px;
+        font-size: clamp(48px, 9vw, 65px);
+        letter-spacing: -3px;
     }
 
     .hero-image img {
@@ -759,8 +760,13 @@ body {
 
 @media (max-width: 480px) {
 
+    .hero {
+        padding: 40px 6%;
+        gap: 30px;
+    }
+
     .hero-content h1 {
-        font-size: 52px;
+        font-size: clamp(40px, 11vw, 52px);
         letter-spacing: -3px;
     }
 
@@ -770,11 +776,19 @@ body {
 
     .hero-buttons a {
         text-align: center;
+        width: 100%;
     }
 
     .hero-image img {
         height: 300px;
     }
+
+    .hero-bottom {
+        font-size: 9px;
+        letter-spacing: 1px;
+        gap: 10px;
+    }
+}
     /* RESPONSIVE PRODUCT SECTION */
 
 @media (max-width: 768px) {
@@ -906,7 +920,7 @@ body {
         flex-direction: column;
     }
 }
-}
+
 </style>
 <body>
     <head>
@@ -914,7 +928,7 @@ body {
     <nav class="navbar">
         <a href="index.html" class="logo">SOLE<span>DISTRICT.</span></a>
 
-        <ul class="nav-links">
+        <ul class="nav-links" id="navLinks">
             <li><a href="/">Home</a></li>
             <li><a href="/about">About</a></li>
             <li><a href="/gallery">Collection</a></li>
@@ -1185,35 +1199,40 @@ if (newsletterForm) {
 
     });
 }
+// mobile navigation 
+
+
 const menuToggle = document.getElementById("menuToggle");
 const navLinks = document.getElementById("navLinks");
 
-menuToggle.addEventListener("click", () => {
+if (menuToggle && navLinks) {
 
-    navLinks.classList.toggle("active");
+    menuToggle.addEventListener("click", function () {
 
-    const isOpen = navLinks.classList.contains("active");
+        navLinks.classList.toggle("active");
 
-    menuToggle.textContent = isOpen ? "×" : "☰";
+        const isOpen = navLinks.classList.contains("active");
 
-    menuToggle.setAttribute("aria-expanded", isOpen);
+        menuToggle.textContent = isOpen ? "×" : "☰";
 
-    menuToggle.setAttribute(
-        "aria-label",
-        isOpen ? "Close navigation menu" : "Open navigation menu"
-    );
+        menuToggle.setAttribute("aria-expanded", isOpen);
 
-});
-
-navLinks.querySelectorAll("a").forEach(link => {
-
-    link.addEventListener("click", () => {
-        navLinks.classList.remove("active");
-        menuToggle.textContent = "☰";
-        menuToggle.setAttribute("aria-expanded", "false");
     });
 
-});
+    navLinks.querySelectorAll("a").forEach(link => {
+
+        link.addEventListener("click", function () {
+
+            navLinks.classList.remove("active");
+            menuToggle.textContent = "☰";
+            menuToggle.setAttribute("aria-expanded", "false");
+
+        });
+
+    });
+
+}
+
 /* SCROLL REVEAL */
 
 const revealElements = document.querySelectorAll(
